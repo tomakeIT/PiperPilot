@@ -1,6 +1,6 @@
 # Contributing
 
-Thanks for helping improve PiperTeleopTools.
+Thanks for helping improve PiperPilot.
 
 ## Development setup
 

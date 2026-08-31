@@ -12,7 +12,7 @@ CONFIG_FLAG = $(if $(CONFIG),--config "$(CONFIG)")
 .PHONY: help toolchain env can apk install-apk connect view collect collect-sm collect-sim test docs docs-serve docs-env
 
 help:
-	@echo "PiperTeleopTools targets:"
+	@echo "PiperPilot targets:"
 	@echo "  toolchain    install Android SDK/NDK/JDK17/Gradle (one-time, ~2.5GB)"
 	@echo "  env          create piper_teleop conda env + deps + pyAgxArm"
 	@echo "  can          bring up can0 @ 1Mbps (sudo)"

@@ -1,8 +1,8 @@
 <p align="center">
-  <img src="docs/assets/hero.svg" alt="PiperTeleopTools: Quest and SpaceMouse teleoperation for Piper-X" width="100%">
+  <img src="docs/assets/hero.svg" alt="PiperPilot: Quest and SpaceMouse teleoperation for Piper-X" width="100%">
 </p>
 
-<h1 align="center">PiperTeleopTools</h1>
+<h1 align="center">PiperPilot</h1>
 
 <p align="center">
   <strong>Low-latency Quest 3 and SpaceMouse teleoperation, LeRobot data
@@ -10,7 +10,7 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/tomakeIT/PiperTeleopTools/actions/workflows/ci.yml"><img alt="CI" src="https://github.com/tomakeIT/PiperTeleopTools/actions/workflows/ci.yml/badge.svg"></a>
+  <a href="https://github.com/tomakeIT/PiperPilot/actions/workflows/ci.yml"><img alt="CI" src="https://github.com/tomakeIT/PiperPilot/actions/workflows/ci.yml/badge.svg"></a>
   <img alt="Python 3.10–3.11" src="https://img.shields.io/badge/Python-3.10%E2%80%933.11-3776AB?logo=python&logoColor=white">
   <img alt="License MIT" src="https://img.shields.io/badge/License-MIT-22c55e">
   <img alt="Platform Linux" src="https://img.shields.io/badge/Platform-Linux-f59e0b?logo=linux&logoColor=white">
@@ -29,7 +29,7 @@ loop with episode replay and a policy-inference runtime.
 > workspace, verify configuration in simulation, and supervise every real-arm
 > run.
 
-📖 **[Full documentation](https://jialengni.com/PiperTeleopTools/)**
+📖 **[Full documentation](https://jialengni.com/PiperPilot/)**
 (MkDocs + Material, from a zero-hardware
 quick start to wire protocols). Every push to `main` automatically builds and
 publishes the documentation with GitHub Pages.
@@ -62,7 +62,7 @@ publishes the documentation with GitHub Pages.
 
 ## Architecture
 
-![PiperTeleopTools system overview](docs/assets/system-overview.svg)
+![PiperPilot system overview](docs/assets/system-overview.svg)
 
 ## Hardware requirements
 

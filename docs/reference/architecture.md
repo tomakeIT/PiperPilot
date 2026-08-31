@@ -1,6 +1,6 @@
 # Architecture & protocols
 
-This page is the technical map of PiperTeleopTools: which processes and threads
+This page is the technical map of PiperPilot: which processes and threads
 exist, how the Quest headset talks to the host over USB, the exact wire
 protocols on both TCP ports, the rates every loop runs at, and where each layer
 of the safety envelope lives. If you just want to drive the arm, start with the

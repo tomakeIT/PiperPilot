@@ -1,6 +1,6 @@
-# PiperTeleopTools
+# PiperPilot
 
-![PiperTeleopTools](assets/hero.svg)
+![PiperPilot](assets/hero.svg)
 
 **Teleoperate an AgileX Piper robot arm with a Meta Quest 3 (or a SpaceMouse), and
 record your demonstrations straight into LeRobot-format datasets — ready for
@@ -69,7 +69,7 @@ simulation:
 
 ```bash
 git clone https://github.com/agilexrobotics/pyAgxArm ~/pyAgxArm   # arm SDK
-git clone https://github.com/tomakeIT/PiperTeleopTools.git && cd PiperTeleopTools
+git clone https://github.com/tomakeIT/PiperPilot.git && cd PiperPilot
 make env          # one-time: conda env + dependencies
 make collect-sim  # fake arm + fake cameras + keyboard controls
 ```
@@ -106,4 +106,4 @@ piece by piece.
 
 ## System overview
 
-![PiperTeleopTools system overview](assets/system-overview.svg)
+![PiperPilot system overview](assets/system-overview.svg)

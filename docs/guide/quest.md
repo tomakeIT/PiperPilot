@@ -1,6 +1,6 @@
 # Quest 3 teleoperation
 
-The Quest 3 is the highest-fidelity input device for PiperTeleopTools: you move
+The Quest 3 is the highest-fidelity input device for PiperPilot: you move
 your hand, the arm follows. A native C++/OpenXR app (no Unity) runs on the
 headset and streams both controller poses at 90 Hz over a wired USB link
 (`adb forward` — measured 90–92 Hz in practice). You see the real room through

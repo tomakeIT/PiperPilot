@@ -1,6 +1,6 @@
 # Control modes & tuning
 
-PiperTeleopTools drives the real arm through one of two control backends,
+PiperPilot drives the real arm through one of two control backends,
 selected by `arm.backend` in the config (or by CLI shortcut). Both accept the
 same stream of absolute EEF pose targets from the teleop loop — they differ in
 *where* inverse kinematics runs and *how* the joints are servoed:

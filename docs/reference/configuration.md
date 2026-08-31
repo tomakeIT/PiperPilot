@@ -1,6 +1,6 @@
 # Configuration
 
-Every tool in PiperTeleopTools (`piper-collect`, `piper-replay`, `piper-infer`, ...) reads the same YAML configuration. This page explains how the layering works, describes the two overlay files that ship with the repository, and then documents every key in the default configuration, block by block.
+Every tool in PiperPilot (`piper-collect`, `piper-replay`, `piper-infer`, ...) reads the same YAML configuration. This page explains how the layering works, describes the two overlay files that ship with the repository, and then documents every key in the default configuration, block by block.
 
 ## How configuration works
 

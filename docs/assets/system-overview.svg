@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 720" role="img" aria-labelledby="title desc">
-  <title id="title">PiperTeleopTools system overview</title>
+  <title id="title">PiperPilot system overview</title>
   <desc id="desc">Quest and SpaceMouse inputs flow through teleoperation control to Piper-X and LeRobot datasets</desc>
   <defs>
     <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">

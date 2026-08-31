@@ -1,4 +1,4 @@
-# PiperTeleopTools default configuration.
+# PiperPilot default configuration.
 # All units: meters, radians, seconds unless noted.
 
 input: quest             # quest | spacemouse  (teleop input device)

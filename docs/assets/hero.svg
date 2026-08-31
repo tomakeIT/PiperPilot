@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 720" role="img" aria-labelledby="title desc">
-  <title id="title">PiperTeleopTools</title>
+  <title id="title">PiperPilot</title>
   <desc id="desc">Quest and SpaceMouse controllers streaming low-latency motion to a Piper-X robot arm</desc>
   <defs>
     <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
@@ -42,7 +42,7 @@
   </g>
   <g font-family="Inter,ui-sans-serif,system-ui,sans-serif">
     <text x="115" y="92" fill="#65f1d2" font-size="24" font-weight="700" letter-spacing="5">OPEN ROBOT TELEOPERATION</text>
-    <text x="115" y="525" fill="#ffffff" font-size="78" font-weight="780">PiperTeleopTools</text>
+    <text x="115" y="525" fill="#ffffff" font-size="92" font-weight="780">PiperPilot</text>
     <text x="115" y="584" fill="#b8d9d6" font-size="28">Quest 3 · SpaceMouse · LeRobot · Piper-X</text>
     <g transform="translate(540 245)">
       <rect width="350" height="190" rx="28" fill="#0d222b" stroke="#29636b" stroke-width="2"/>

@@ -30,7 +30,7 @@ jobs:
         run: python -m pip install ".[docs]"
       - name: Build documentation
         env:
-          SITE_URL: https://jialengni.com/PiperTeleopTools/
+          SITE_URL: https://jialengni.com/PiperPilot/
           REPO_URL: https://github.com/${{ github.repository }}
         run: python -m mkdocs build --strict
       - uses: actions/configure-pages@v5

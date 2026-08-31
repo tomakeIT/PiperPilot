@@ -1,6 +1,6 @@
 # CLI reference
 
-Every workflow in PiperTeleopTools is driven from the terminal, in two
+Every workflow in PiperPilot is driven from the terminal, in two
 equivalent ways: short `make` targets (what the install and quickstart pages
 use) and the `piper-*` console commands they wrap. This page lists both — the
 make cheat sheet first, then the full flag tables for each console command.

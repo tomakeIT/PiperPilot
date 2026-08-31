@@ -3,7 +3,7 @@ requires = ["setuptools>=64"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "piper-teleop-tools"
+name = "piperpilot"
 version = "0.1.0"
 description = "Quest 3 / SpaceMouse teleoperation and data collection for the AgileX Piper arm (LeRobot v2.0 datasets)"
 readme = "README.md"
@@ -45,10 +45,10 @@ test = ["pytest>=8.0"]
 docs = ["mkdocs>=1.6", "mkdocs-material>=9.5"]
 
 [project.urls]
-Homepage = "https://github.com/tomakeIT/PiperTeleopTools"
-Documentation = "https://jialengni.com/PiperTeleopTools/"
-Repository = "https://github.com/tomakeIT/PiperTeleopTools.git"
-Issues = "https://github.com/tomakeIT/PiperTeleopTools/issues"
+Homepage = "https://github.com/tomakeIT/PiperPilot"
+Documentation = "https://jialengni.com/PiperPilot/"
+Repository = "https://github.com/tomakeIT/PiperPilot.git"
+Issues = "https://github.com/tomakeIT/PiperPilot/issues"
 
 [project.scripts]
 piper-view = "piper_teleop.apps.view_poses:main"

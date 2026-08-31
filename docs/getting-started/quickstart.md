@@ -1,6 +1,6 @@
 # Quick start (no hardware)
 
-This page walks you through the whole PiperTeleopTools pipeline in about ten
+This page walks you through the whole PiperPilot pipeline in about ten
 minutes — with **no robot arm, no headset, and no cameras**. Everything runs
 against a simulated ("fake") arm and fake cameras on your Linux machine.
 
@@ -27,8 +27,8 @@ checkout, so clone that first:
 
 ```bash
 git clone https://github.com/agilexrobotics/pyAgxArm ~/pyAgxArm
-git clone https://github.com/tomakeIT/PiperTeleopTools.git
-cd PiperTeleopTools
+git clone https://github.com/tomakeIT/PiperPilot.git
+cd PiperPilot
 make env
 conda activate piper_teleop
 ```
