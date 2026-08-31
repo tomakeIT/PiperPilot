@@ -29,7 +29,7 @@
     <path d="M1395 191l49-45m-31 76l54-12"/>
     <path d="M1444 146l24 24m-1 40l-8 42"/>
   </g>
-  <g transform="translate(115 180)" fill="none" stroke="#d4f7f1" stroke-width="7" stroke-linecap="round" stroke-linejoin="round">
+  <g transform="translate(130 180) scale(.78)" fill="none" stroke="#d4f7f1" stroke-width="7" stroke-linecap="round" stroke-linejoin="round">
     <path d="M43 40c58-43 202-43 260 0l28 109c6 23-13 44-37 34l-64-28H116l-64 28c-24 10-43-11-37-34z" fill="#102c36"/>
     <path d="M102 155l-11 108c-3 29-36 45-59 26-15-12-20-33-13-51l34-83"/>
     <path d="M244 155l11 108c3 29 36 45 59 26 15-12 20-33 13-51l-34-83"/>
@@ -37,14 +37,14 @@
     <path d="M68 82h38m-19-19v38m153-20h1m34 25h1"/>
   </g>
   <g stroke="#65f1d2" stroke-linecap="round">
-    <path d="M510 340h418" stroke-width="5" stroke-dasharray="2 22" opacity=".8"/>
-    <path d="M904 317l38 23-38 23" fill="none" stroke-width="7"/>
+    <path d="M450 340h110m350 0h150" stroke-width="5" stroke-dasharray="2 22" opacity=".8"/>
+    <path d="M1045 317l38 23-38 23" fill="none" stroke-width="7"/>
   </g>
   <g font-family="Inter,ui-sans-serif,system-ui,sans-serif">
-    <text x="115" y="92" fill="#65f1d2" font-size="24" font-weight="700" letter-spacing="5">OPEN ROBOT TELEOPERATION</text>
-    <text x="115" y="525" fill="#ffffff" font-size="92" font-weight="780">PiperPilot</text>
-    <text x="115" y="584" fill="#b8d9d6" font-size="28">Quest 3 · SpaceMouse · LeRobot · Piper-X</text>
-    <g transform="translate(540 245)">
+    <text x="130" y="92" fill="#65f1d2" font-size="24" font-weight="700" letter-spacing="5">OPEN ROBOT TELEOPERATION</text>
+    <text x="130" y="525" fill="#ffffff" font-size="92" font-weight="780">PiperPilot</text>
+    <text x="130" y="584" fill="#b8d9d6" font-size="28">Quest 3 · SpaceMouse · LeRobot · Piper-X</text>
+    <g transform="translate(560 245)">
       <rect width="350" height="190" rx="28" fill="#0d222b" stroke="#29636b" stroke-width="2"/>
       <text x="175" y="68" fill="#65f1d2" font-size="48" text-anchor="middle" font-weight="760">90 Hz</text>
       <text x="175" y="108" fill="#ffffff" font-size="21" text-anchor="middle">wired pose stream</text>

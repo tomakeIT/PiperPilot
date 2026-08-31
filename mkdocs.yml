@@ -79,7 +79,6 @@ nav:
       - Quest 3 teleoperation: guide/quest.md
       - SpaceMouse teleoperation: guide/spacemouse.md
       - Collecting datasets: guide/data-collection.md
-      - Human RGB-D capture: guide/human-rgbd-capture.md
       - Replaying episodes: guide/replay.md
       - External datasets & frame conventions: guide/external-datasets.md
       - Running policies: guide/inference.md
