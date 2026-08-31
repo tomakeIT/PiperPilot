@@ -25,7 +25,7 @@ not needed for anything else.
 - Git, to clone this repository and the pyAgxArm SDK.
 
 ```bash
-git clone <repository-url>
+git clone https://github.com/tomakeIT/PiperTeleopTools.git
 cd PiperTeleopTools
 ```
 

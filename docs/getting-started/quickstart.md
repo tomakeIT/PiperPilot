@@ -27,7 +27,7 @@ checkout, so clone that first:
 
 ```bash
 git clone https://github.com/agilexrobotics/pyAgxArm ~/pyAgxArm
-git clone <repository-url>
+git clone https://github.com/tomakeIT/PiperTeleopTools.git
 cd PiperTeleopTools
 make env
 conda activate piper_teleop

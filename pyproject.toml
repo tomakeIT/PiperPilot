@@ -46,7 +46,7 @@ docs = ["mkdocs>=1.6", "mkdocs-material>=9.5"]
 
 [project.urls]
 Homepage = "https://github.com/tomakeIT/PiperTeleopTools"
-Documentation = "https://tomakeit.github.io/PiperTeleopTools/"
+Documentation = "https://jialengni.com/PiperTeleopTools/"
 Repository = "https://github.com/tomakeIT/PiperTeleopTools.git"
 Issues = "https://github.com/tomakeIT/PiperTeleopTools/issues"
 

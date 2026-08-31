@@ -29,7 +29,7 @@ loop with episode replay and a policy-inference runtime.
 > workspace, verify configuration in simulation, and supervise every real-arm
 > run.
 
-📖 **[Full documentation](https://tomakeit.github.io/PiperTeleopTools/)**
+📖 **[Full documentation](https://jialengni.com/PiperTeleopTools/)**
 (MkDocs + Material, from a zero-hardware
 quick start to wire protocols). Every push to `main` automatically builds and
 publishes the documentation with GitHub Pages.

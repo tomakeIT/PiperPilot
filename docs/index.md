@@ -30,7 +30,7 @@ runs it back on the robot.
     No headset? A 3Dconnexion SpaceMouse drives the arm with rate control —
     same pipeline, one flag.
 
-- :material-spring: **Compliant by default**
+- :material-robot-industrial: **Compliant by default**
 
     ---
 
@@ -69,7 +69,7 @@ simulation:
 
 ```bash
 git clone https://github.com/agilexrobotics/pyAgxArm ~/pyAgxArm   # arm SDK
-git clone <repository-url> PiperTeleopTools && cd PiperTeleopTools
+git clone https://github.com/tomakeIT/PiperTeleopTools.git && cd PiperTeleopTools
 make env          # one-time: conda env + dependencies
 make collect-sim  # fake arm + fake cameras + keyboard controls
 ```
