@@ -1,21 +1,26 @@
-# 外部数据集：坐标系约定与转换
+# External datasets: frame conventions and conversion
 
-外部机器人数据集往往采用不同的末端坐标系、四元数顺序和夹爪单位。直接回放
-这些数据可能造成 IK 失败、轨迹越界或夹爪动作错误。本页说明公开、通用的检查
-与转换流程；任何真机验证都应先在仿真模式完成。
+External robot datasets often use different end-effector frames, quaternion
+orders, and gripper units. Replaying them without conversion can cause IK
+failures, out-of-bounds trajectories, or incorrect gripper motion. This page
+describes a public, dataset-agnostic validation and conversion workflow. Always
+complete the simulation checks before validating a dataset on real hardware.
 
-## 常见差异
+## Common differences
 
-- **位置参考系**：世界系、机器人基座系或相对起点坐标系。
-- **末端姿态**：绝对法兰姿态，或相对工具中立位的旋转。
-- **四元数顺序**：`wxyz` 与 `xyzw`。
-- **相对旋转定义**：world-frame delta 与 body-frame delta 不可混用。
-- **夹爪单位**：米制宽度、归一化值或设备原始读数。
+- **Position frame:** world, robot base, or a frame relative to the episode's
+  initial pose.
+- **End-effector orientation:** an absolute flange orientation or a rotation
+  relative to a neutral tool pose.
+- **Quaternion order:** `wxyz` or `xyzw`.
+- **Relative rotation convention:** world-frame and body-frame deltas are not
+  interchangeable.
+- **Gripper units:** metric width, normalized values, or raw device readings.
 
-## 数据集 sidecar
+## Dataset sidecar
 
-把数据集特有的变换写入其 `meta/piper_replay.json`，而不是硬编码到机器人
-运行时：
+Store dataset-specific transforms in `meta/piper_replay.json` instead of
+hard-coding them into the robot runtime:
 
 ```json
 {
@@ -24,30 +29,41 @@
 }
 ```
 
-以上数值只是一个示例，不能直接用于新的数据集。请根据数据集文档、可视化和
-离线 IK 检查独立确定。
+These values are examples only and must not be reused for a new dataset.
+Determine the transform independently from the dataset documentation,
+visualization, and offline IK checks.
 
-## 工具链
+## Toolchain
 
-- `piper-viz --root <dataset> --episode 0`：检查工作空间、轨迹和姿态轴。
-- `piper-replay --sim --root <dataset>`：在假后端应用 sidecar 并检查保护器。
-- `piper-replay --root <dataset>`：人工确认后进行低速真机验证。
-- `piper-convert --root <dataset>`：一次性生成 Piper 坐标系副本，并把溯源写入
-  `meta/frame_conversion.json`。
+- `piper-viz --root <dataset> --episode 0`: inspect the workspace, trajectory,
+  and orientation axes.
+- `piper-replay --sim --root <dataset>`: apply the sidecar on the simulated
+  backend and exercise the safety guards.
+- `piper-replay --root <dataset>`: perform a low-speed hardware validation only
+  after manual review.
+- `piper-convert --root <dataset>`: create a one-time copy in the Piper frame
+  and record provenance in `meta/frame_conversion.json`.
 
-转换后的数据不会携带 `piper_replay.json`，以避免回放时重复应用变换。统计文件
-也应从转换后的值重新计算，不要沿用原坐标系下的归一化统计。
+The converted dataset does not retain `piper_replay.json`, which prevents the
+transform from being applied twice during replay. Recompute statistics from
+the converted values rather than carrying over normalization statistics from
+the source frame.
 
-## 推荐流程
+## Recommended workflow
 
-1. 阅读数据集的坐标系、四元数和夹爪定义。
-2. 可视化一条轨迹，检查位置范围和末端三轴方向。
-3. 离线计算 IK 可行率，并确认所有目标落在工作空间内。
-4. 写入 sidecar 后用 `--sim` 回放。
-5. 使用 `piper-convert` 创建新副本并重新计算统计量。
-6. 真机验证时降低速度，保持急停可用，并从无障碍短轨迹开始。
+1. Read the dataset's coordinate-frame, quaternion, and gripper definitions.
+2. Visualize one trajectory and inspect its position range and end-effector
+   axes.
+3. Compute IK feasibility offline and confirm that every target lies inside the
+   configured workspace.
+4. Add the sidecar and replay with `--sim`.
+5. Use `piper-convert` to create a new copy and recompute its statistics.
+6. For hardware validation, reduce the speed, keep the emergency stop within
+   reach, and begin with a short, obstacle-free trajectory.
 
-!!! danger "不要把坐标系变换留到训练加载器里"
-    如果归一化统计在变换前计算，checkpoint 会记录错误坐标系的统计量；部署端
-    再做反归一化时会继续放大这个错误。优先在数据边界转换一次，使训练、评估和
-    部署都只处理机器人原生坐标系。
+!!! danger "Do not leave frame conversion in the training data loader"
+    If normalization statistics are computed before conversion, the checkpoint
+    records statistics for the wrong frame. Denormalizing at deployment then
+    amplifies the same error. Prefer one conversion at the dataset boundary so
+    training, evaluation, and deployment all operate in the robot's native
+    frame.
