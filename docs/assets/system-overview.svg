@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 720" role="img" aria-labelledby="title desc">
+  <title id="title">PiperTeleopTools system overview</title>
+  <desc id="desc">Quest and SpaceMouse inputs flow through teleoperation control to Piper-X and LeRobot datasets</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0 0l10 5-10 5z" fill="#0f766e"/>
+    </marker>
+    <style>
+      .box{fill:#f7fbfa;stroke:#99c9c3;stroke-width:3}.head{font:700 28px Inter,system-ui,sans-serif;fill:#0f3d3b}.body{font:20px Inter,system-ui,sans-serif;fill:#456765}.tag{font:700 16px Inter,system-ui,sans-serif;fill:#0f766e;letter-spacing:1px}.flow{fill:none;stroke:#0f766e;stroke-width:5;marker-end:url(#arrow)}
+    </style>
+  </defs>
+  <rect width="1600" height="720" rx="28" fill="#edf7f5"/>
+  <text x="800" y="70" text-anchor="middle" class="head" font-size="38">One pipeline, from human motion to training data</text>
+  <g transform="translate(70 138)">
+    <rect class="box" width="310" height="180" rx="24"/>
+    <text class="tag" x="30" y="42">INPUT</text><text class="head" x="30" y="88">Quest 3</text>
+    <text class="body" x="30" y="125">Dual 6-DoF · 90 Hz</text><text class="body" x="30" y="156">OpenXR over wired USB</text>
+  </g>
+  <g transform="translate(70 400)">
+    <rect class="box" width="310" height="180" rx="24"/>
+    <text class="tag" x="30" y="42">INPUT</text><text class="head" x="30" y="88">SpaceMouse</text>
+    <text class="body" x="30" y="125">Direct HID rate control</text><text class="body" x="30" y="156">No background daemon</text>
+  </g>
+  <path class="flow" d="M380 228h95v157h50"/><path class="flow" d="M380 490h95V385h50"/>
+  <g transform="translate(525 245)">
+    <rect width="390" height="280" rx="30" fill="#073b3a" stroke="#31c8b2" stroke-width="4"/>
+    <text x="195" y="58" text-anchor="middle" fill="#74ead8" font-family="Inter,system-ui,sans-serif" font-size="17" font-weight="700" letter-spacing="2">TELEOP CORE</text>
+    <text x="195" y="110" text-anchor="middle" fill="white" font-family="Inter,system-ui,sans-serif" font-size="30" font-weight="700">Safety + Control</text>
+    <text x="42" y="158" fill="#c7e8e3" font-family="Inter,system-ui,sans-serif" font-size="19">• clutch mapping + filtering</text>
+    <text x="42" y="197" fill="#c7e8e3" font-family="Inter,system-ui,sans-serif" font-size="19">• workspace + velocity limits</text>
+    <text x="42" y="236" fill="#c7e8e3" font-family="Inter,system-ui,sans-serif" font-size="19">• impedance or position mode</text>
+  </g>
+  <path class="flow" d="M915 330h125V228h70"/><path class="flow" d="M915 440h125v80h70"/>
+  <g transform="translate(1110 138)">
+    <rect class="box" width="420" height="180" rx="24"/>
+    <text class="tag" x="30" y="42">ROBOT</text><text class="head" x="30" y="88">Piper / Piper-X</text>
+    <text class="body" x="30" y="125">pyAgxArm · CAN · gripper</text><text class="body" x="30" y="156">watchdogs + fault stop</text>
+  </g>
+  <g transform="translate(1110 430)">
+    <rect class="box" width="420" height="180" rx="24"/>
+    <text class="tag" x="30" y="42">DATA</text><text class="head" x="30" y="88">LeRobot v2.0</text>
+    <text class="body" x="30" y="125">Parquet + MP4 + metadata</text><text class="body" x="30" y="156">Replay and policy runtime</text>
+  </g>
+</svg>

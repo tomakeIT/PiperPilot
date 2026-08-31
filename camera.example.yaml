@@ -1,0 +1,18 @@
+# Copy this file to camera_local.yaml (git-ignored), then replace the values
+# with the serial numbers reported by your RealSense devices.
+cameras:
+  - name: cam_front
+    serial: "FRONT_CAMERA_SERIAL"
+    width: 640
+    height: 480
+    fps: 30
+  - name: cam_wrist
+    serial: "WRIST_CAMERA_SERIAL"
+    width: 640
+    height: 480
+    fps: 30
+  - name: cam_back
+    serial: "BACK_CAMERA_SERIAL"
+    width: 640
+    height: 480
+    fps: 30

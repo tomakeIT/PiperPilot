@@ -1,0 +1,2 @@
+# Documentation toolchain (only needed to build/serve the docs site)
+mkdocs-material>=9.5

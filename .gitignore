@@ -1,0 +1,46 @@
+# Python
+__pycache__/
+*.pyc
+*.egg-info/
+build/
+dist/
+.pytest_cache/
+.coverage
+htmlcov/
+.venv/
+venv/
+
+# Android / Gradle
+quest_app/.gradle/
+quest_app/app/build/
+quest_app/build/
+quest_app/local.properties
+quest_app/.cxx/
+*.apk
+*.aab
+*.jks
+*.keystore
+
+# MkDocs build output
+site/
+
+# Local machine state
+install/lock_*.txt
+*.log
+.env
+.env.*
+!.env.example
+*.local.yaml
+*_local.yaml
+.DS_Store
+.idea/
+.vscode/
+
+# Recorded datasets and replay artifacts
+piper_datasets/
+data/
+replay_logs/
+
+# Unrelated local work artifacts (not part of this repository)
+/output/
+/work_evidence/

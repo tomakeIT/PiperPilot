@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 720" role="img" aria-labelledby="title desc">
+  <title id="title">PiperTeleopTools</title>
+  <desc id="desc">Quest and SpaceMouse controllers streaming low-latency motion to a Piper-X robot arm</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#07131d"/>
+      <stop offset="0.55" stop-color="#0a2730"/>
+      <stop offset="1" stop-color="#10373b"/>
+    </linearGradient>
+    <radialGradient id="glow">
+      <stop offset="0" stop-color="#39e6c1" stop-opacity=".35"/>
+      <stop offset="1" stop-color="#39e6c1" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="soft"><feGaussianBlur stdDeviation="10"/></filter>
+  </defs>
+  <rect width="1600" height="720" rx="34" fill="url(#bg)"/>
+  <circle cx="1240" cy="340" r="390" fill="url(#glow)"/>
+  <circle cx="330" cy="160" r="220" fill="#266b78" opacity=".13" filter="url(#soft)"/>
+  <g fill="none" stroke="#65f1d2" stroke-width="8" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M1130 590h330" opacity=".5"/>
+    <rect x="1264" y="536" width="110" height="52" rx="15" fill="#102f35"/>
+    <path d="M1319 536v-86l-111-68"/>
+    <circle cx="1319" cy="450" r="27" fill="#153e42"/>
+    <circle cx="1208" cy="382" r="27" fill="#153e42"/>
+    <path d="M1208 382l63-112"/>
+    <circle cx="1271" cy="270" r="27" fill="#153e42"/>
+    <path d="M1271 270l105-63"/>
+    <circle cx="1376" cy="207" r="25" fill="#153e42"/>
+    <path d="M1395 191l49-45m-31 76l54-12"/>
+    <path d="M1444 146l24 24m-1 40l-8 42"/>
+  </g>
+  <g transform="translate(115 180)" fill="none" stroke="#d4f7f1" stroke-width="7" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M43 40c58-43 202-43 260 0l28 109c6 23-13 44-37 34l-64-28H116l-64 28c-24 10-43-11-37-34z" fill="#102c36"/>
+    <path d="M102 155l-11 108c-3 29-36 45-59 26-15-12-20-33-13-51l34-83"/>
+    <path d="M244 155l11 108c3 29 36 45 59 26 15-12 20-33 13-51l-34-83"/>
+    <circle cx="173" cy="90" r="27" stroke="#65f1d2"/>
+    <path d="M68 82h38m-19-19v38m153-20h1m34 25h1"/>
+  </g>
+  <g stroke="#65f1d2" stroke-linecap="round">
+    <path d="M510 340h418" stroke-width="5" stroke-dasharray="2 22" opacity=".8"/>
+    <path d="M904 317l38 23-38 23" fill="none" stroke-width="7"/>
+  </g>
+  <g font-family="Inter,ui-sans-serif,system-ui,sans-serif">
+    <text x="115" y="92" fill="#65f1d2" font-size="24" font-weight="700" letter-spacing="5">OPEN ROBOT TELEOPERATION</text>
+    <text x="115" y="525" fill="#ffffff" font-size="78" font-weight="780">PiperTeleopTools</text>
+    <text x="115" y="584" fill="#b8d9d6" font-size="28">Quest 3 · SpaceMouse · LeRobot · Piper-X</text>
+    <g transform="translate(540 245)">
+      <rect width="350" height="190" rx="28" fill="#0d222b" stroke="#29636b" stroke-width="2"/>
+      <text x="175" y="68" fill="#65f1d2" font-size="48" text-anchor="middle" font-weight="760">90 Hz</text>
+      <text x="175" y="108" fill="#ffffff" font-size="21" text-anchor="middle">wired pose stream</text>
+      <path d="M75 143h200" stroke="#29636b" stroke-width="2"/>
+      <text x="175" y="170" fill="#9fc8c5" font-size="17" text-anchor="middle">USB · OpenXR · CAN</text>
+    </g>
+  </g>
+</svg>

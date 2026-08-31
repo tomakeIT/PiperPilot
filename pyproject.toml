@@ -1,0 +1,75 @@
+[build-system]
+requires = ["setuptools>=64"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "piper-teleop-tools"
+version = "0.1.0"
+description = "Quest 3 / SpaceMouse teleoperation and data collection for the AgileX Piper arm (LeRobot v2.0 datasets)"
+readme = "README.md"
+license = { file = "LICENSE" }
+requires-python = ">=3.10"
+keywords = ["robotics", "teleoperation", "openxr", "lerobot", "piper"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: POSIX :: Linux",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+dependencies = [
+    "numpy>=1.26",
+    "pyyaml>=6.0",
+    "pandas>=2.1",
+    "pyarrow>=14.0",
+    "av>=12.0",
+    "opencv-python>=4.9",
+]
+
+[project.optional-dependencies]
+hardware = [
+    "python-can>=3.3.4",
+    "pyrealsense2>=2.55; platform_system == 'Linux'",
+    "hidapi>=0.14",
+]
+visualization = ["rerun-sdk==0.35.0"]
+full = [
+    "python-can>=3.3.4",
+    "pyrealsense2>=2.55; platform_system == 'Linux'",
+    "hidapi>=0.14",
+    "rerun-sdk==0.35.0",
+]
+test = ["pytest>=8.0"]
+docs = ["mkdocs>=1.6", "mkdocs-material>=9.5"]
+
+[project.urls]
+Homepage = "https://github.com/tomakeIT/PiperTeleopTools"
+Documentation = "https://tomakeit.github.io/PiperTeleopTools/"
+Repository = "https://github.com/tomakeIT/PiperTeleopTools.git"
+Issues = "https://github.com/tomakeIT/PiperTeleopTools/issues"
+
+[project.scripts]
+piper-view = "piper_teleop.apps.view_poses:main"
+piper-collect = "piper_teleop.apps.collect_data:main"
+piper-human = "piper_teleop.apps.collect_human:main"
+piper-home = "piper_teleop.apps.home_arm:main"
+piper-track-test = "piper_teleop.apps.track_test:main"
+piper-watch-pose = "piper_teleop.apps.watch_pose:main"
+piper-replay = "piper_teleop.apps.replay:main"
+piper-viz = "piper_teleop.apps.viz_episode:main"
+piper-infer = "piper_teleop.apps.infer:main"
+piper-serve = "piper_teleop.apps.robot_server:main"
+piper-finalize = "piper_teleop.tools.finalize_dataset:main"
+piper-convert = "piper_teleop.tools.convert_to_piper_frame:main"
+
+[tool.setuptools.packages.find]
+include = ["piper_teleop*"]
+
+[tool.setuptools.package-data]
+piper_teleop = ["configs/*.yaml"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra"

@@ -1,0 +1,13 @@
+# Host-side python dependencies (python 3.11).
+numpy>=1.26
+pyyaml>=6.0
+pandas>=2.1
+pyarrow>=14.0
+av>=12.0                 # mp4 encoding with exact PTS control
+opencv-python>=4.9       # image ops / debug view
+pyrealsense2>=2.55       # Intel RealSense D435i capture
+rerun-sdk==0.35.0        # live 3D visualization (visualize.py targets this API)
+python-can>=3.3.4        # pyAgxArm dependency
+typing-extensions>=4.0   # pyAgxArm dependency
+hidapi>=0.14             # SpaceMouse direct HID read (udev rule: install/04_spacemouse_setup.sh)
+pytest>=8.0

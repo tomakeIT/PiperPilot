@@ -1,0 +1,93 @@
+site_name: PiperTeleopTools
+site_description: >-
+  VR & SpaceMouse teleoperation, impedance control, and LeRobot-format data
+  collection for the AgileX Piper arm.
+site_url: !ENV [SITE_URL, "https://tomakeit.github.io/PiperTeleopTools/"]
+repo_url: !ENV [REPO_URL, "https://github.com/tomakeIT/PiperTeleopTools"]
+repo_name: PiperTeleopTools
+
+theme:
+  name: material
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: black
+      accent: teal
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: black
+      accent: teal
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  features:
+    - navigation.instant
+    - navigation.tracking
+    - navigation.tabs
+    - navigation.sections
+    - navigation.top
+    - navigation.footer
+    - toc.follow
+    - search.suggest
+    - search.highlight
+    - content.code.copy
+    - content.tabs.link
+  icon:
+    repo: fontawesome/brands/github
+
+plugins:
+  - search
+
+validation:
+  links:
+    anchors: warn
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - md_in_html
+  - def_list
+  - tables
+  - toc:
+      permalink: true
+  - pymdownx.details
+  - pymdownx.keys
+  - pymdownx.inlinehilite
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+
+nav:
+  - Home: index.md
+  - Getting Started:
+      - Quick start (no hardware): getting-started/quickstart.md
+      - Installation: getting-started/installation.md
+      - First run on the real arm: getting-started/first-teleop.md
+  - User Guide:
+      - Quest 3 teleoperation: guide/quest.md
+      - SpaceMouse teleoperation: guide/spacemouse.md
+      - Collecting datasets: guide/data-collection.md
+      - Human RGB-D capture: guide/human-rgbd-capture.md
+      - Replaying episodes: guide/replay.md
+      - External datasets & frame conventions: guide/external-datasets.md
+      - Running policies: guide/inference.md
+  - Reference:
+      - Architecture & protocols: reference/architecture.md
+      - Control modes & tuning: reference/control-modes.md
+      - Dataset format: reference/dataset-format.md
+      - Configuration: reference/configuration.md
+      - CLI reference: reference/cli.md
+      - Benchmarks: reference/benchmarks.md
+  - Troubleshooting: troubleshooting.md

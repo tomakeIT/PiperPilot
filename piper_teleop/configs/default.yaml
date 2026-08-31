@@ -1,0 +1,159 @@
+# PiperTeleopTools default configuration.
+# All units: meters, radians, seconds unless noted.
+
+input: quest             # quest | spacemouse  (teleop input device)
+
+quest:
+  host: 127.0.0.1        # via `adb forward tcp:8735 tcp:8735` (wired USB)
+  port: 8735
+  control_hand: right    # which controller drives the arm
+  stale_timeout_s: 0.25  # freeze arm target if no fresh pose within this window
+  video:                 # stream RealSense views into the headset (floating
+    enabled: true        # panels over passthrough; separate port -> the pose
+    port: 8736           # stream keeps absolute priority)
+    fps: 15
+    quality: 70          # JPEG quality
+    max_width: 640
+
+teleop:
+  rate_hz: 100           # control loop rate (move_p streaming)
+  pos_scale: 1.0         # controller motion -> arm motion scale
+  clutch_engage: 0.7     # squeeze (grip) analog threshold to engage
+  clutch_release: 0.3    # hysteresis release threshold
+  yaw_offset_deg: 0.0    # extra rotation about robot +z applied to the
+                         # XR->robot mapping. PREFER the two-point X-axis
+                         # calibration instead of hand-tuning this: press [c]
+                         # in piper-collect, trigger-click a point, move the
+                         # controller along robot +X, click again — the line
+                         # becomes robot +X and is saved as a persistent
+                         # spatial anchor (survives headset reboots; leave
+                         # this at 0). This value remains as a manual trim on
+                         # top. Status shows [anchor] when pinned; "ANCHOR
+                         # LOST" means the room was not recognized — press
+                         # [c] to recalibrate. Up/down is never affected
+                         # (gravity-aligned).
+  filter:                # one-euro filter on the controller pose
+    min_cutoff: 1.2      # Hz; lower = smoother but laggier at rest
+    beta: 0.02           # speed coefficient; higher = less lag during fast motion
+    d_cutoff: 1.0
+  limits:
+    workspace_min: [0.05, -0.35, 0.03]   # EEF position box, robot base frame
+    workspace_max: [0.55,  0.35, 0.50]   # (Piper reach ~0.62 m — stay inside)
+    max_lin_vel: 0.8     # m/s   cap on target displacement per tick
+    max_ang_vel: 2.5     # rad/s cap on target rotation per tick
+    pitch_abs_max_deg: 88.0  # keep clear of move_p's hard pitch limit (90 deg)
+    max_cmd_deviation: 0.12  # m; target is tethered to the measured EEF pose
+                             # (prevents catch-up lunges after blocking/faults)
+
+spacemouse:              # rate control: puck deflection -> EEF velocity
+  device: ""             # pyspacemouse device name; "" = auto-detect
+  rate_hz: 100
+  deadzone: 0.10         # normalized deflection below this is ignored
+  max_lin_vel: 0.15      # m/s at full deflection
+  max_ang_vel: 0.9       # rad/s at full deflection
+  axis_signs: [1, 1, 1, -1, -1, -1]   # flip individual axes: x,y,z,roll,pitch,yaw
+                                      # (rotations inverted to match operator preference)
+  gripper_button: 0      # left button: toggle gripper
+  record_button: 1       # right button: SHORT press = start/stop episode,
+                         #               LONG press (home_hold_s) = home; both = discard
+  chord_window_s: 0.2    # single-button actions wait this long for a chord partner
+  home_hold_s: 1.0       # hold the record button this long to home the arm
+  stale_timeout_s: 0.15  # no HID report within this window -> twist treated as zero
+
+arm:
+  backend: piper_mit     # piper_mit = MIT impedance (DEFAULT): host IK +
+                         #             per-joint spring-damper, compliant on
+                         #             contact (bounded-force safety)
+                         # piper     = move_p position control (firmware IK,
+                         #             tightest tracking; CLI: --position)
+                         # fake      = full pipeline without hardware
+  model: PIPER_X         # pyAgxArm ArmModel enum name (PIPER / PIPER_X / ...)
+  firmware: V189         # pyAgxArm PiperFW enum name — MUST match robot.get_firmware()
+                         # (verified on this arm: S-V1.8-9 -> V189)
+  interface: socketcan
+  channel: can0
+  bitrate: 1000000
+  speed_percent: 100
+  enable_soft_joint_limits: true
+  home_joints: null      # e.g. [0.0, 0.8, -0.6, 0.0, 0.6, 0.0]; null = don't auto-home
+
+impedance:               # piper_mit backend only. T = kp*(q_des-q) - kd*v + t_ff
+  kp: [5, 25, 5, 8, 8, 5]      # N*m/rad — near SDK reference (10); tune on-robot:
+                                 # droops under gravity -> raise; hums/buzzes -> lower
+  kd: [0.3, 1.2, 0.3, 0.45, 0.45, 0.3]  # damping; too high amplifies velocity
+                                        # sensor noise into audible hum (SDK ref 0.8)
+  t_ff: [0, 0, 0, 0, 0, 0]       # manual feed-forward trim (N*m), added on top
+  gravity_ff: true               # snapshot the position servo's holding torques
+                                 # at MIT entry -> no droop at/near entry pose,
+                                 # torque-smooth handover (auto-disabled if the
+                                 # post-entry deflection check fails)
+  soft_start_s: 0.8              # gain ramp at MIT entry (kills handover clunk)
+  engage_on_start: true          # enter impedance hold right at startup
+                                 # (false = only on first clutch engage)
+  max_joint_vel: 3.5             # rad/s per-joint target step clamp (safety
+                                 # backstop; teleop is also capped in Cartesian
+                                 # space. 1.5 saturated on fast wrist flips in
+                                 # RoboMIND replays — j4 held back and IK
+                                 # lagged; full non-saturation would need
+                                 # >20 rad/s, i.e. violent whips — keep 3.5)
+  ik:
+    iters: 4
+    damping: 0.05                # DLS lambda
+    pos_tol: 0.002               # m
+  joint_limits_deg:              # auto-intersected with the SDK per-model preset
+    lower: [-148, 2, -168, -87, -87, -178]   # (PIPER_X: j4/j5 are ±89 in SDK!)
+    upper: [148, 178, -2, 87, 87, 178]
+
+gripper:
+  enabled: true
+  max_width: 0.07        # 0.07 or 0.10 depending on installed gripper stroke
+  force: 2.0             # newtons
+  rate_hz: 50            # gripper command rate (separate from arm rate)
+  open_margin: 0.002     # commands are clamped to max_width - this margin so a
+                         # "fully open" target never stalls the motor against
+                         # the mechanical end stop (hot-gripper protection)
+
+cameras:                 # RealSense color streams. Set serials in a local
+                         # overlay to pin names to physical camera mounts.
+  - name: cam_front
+    serial: ""           # empty = first available unassigned camera
+    width: 640
+    height: 480
+    fps: 30
+  - name: cam_wrist
+    serial: ""
+    width: 640
+    height: 480
+    fps: 30
+  - name: cam_back
+    serial: ""
+    width: 640
+    height: 480
+    fps: 30
+
+monitor:                 # local web dashboard during piper-collect: mirrors
+  enabled: true          # the in-headset HUD (state / timer / episode count)
+  host: 127.0.0.1        # plus live camera thumbnails, read-only.
+  port: 8780             # set host: 0.0.0.0 to view from other LAN devices
+                         # (unauthenticated — exposes camera views to the LAN)
+
+recording:
+  fps: 30                        # proprio/action rate; matches camera fps so
+                                 # every row has a near-simultaneous fresh frame.
+                                 # NOTE: configure your trainer with
+                                 # action_frequency=30 (e.g. sampling stride 3
+                                 # for a 10 Hz decision rate).
+  root: ~/piper_datasets         # dataset root directory
+  task: "pick up the object and place it in the box"
+  robot_type: piper
+  chunks_size: 1000
+  save_raw_quest: true           # also dump raw quest stream per episode (debug)
+  video:
+    codec: libx264
+    pix_fmt: yuv420p
+    crf: 23
+    preset: veryfast
+
+viz:
+  enabled: false         # rerun visualization during teleop/collect
+  spawn: true            # spawn local rerun viewer (false + --serve for headless)

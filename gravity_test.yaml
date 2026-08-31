@@ -1,0 +1,14 @@
+# Gravity-compensation probe for the firmware's MIT mode.
+# Usage:  piper-teleop --impedance --config gravity_test.yaml
+#         (watch the arm for ~20 s after "MIT mode active"; keep hands ready)
+#
+#   arm HOLDS its pose  -> firmware DOES gravity-compensate in MIT mode
+#   arm SINKS slowly    -> no firmware g-comp (droop was masked by friction);
+#                          host-side t_ff gravity feedforward would be needed
+#
+# kp ~ 0: no spring to hold the arm up; kd keeps any fall slow and damped.
+
+impedance:
+  kp: [0.5, 0.5, 0.5, 0.5, 0.5, 0.5]
+  kd: [1.0, 1.5, 1.2, 0.5, 0.5, 0.3]
+  engage_on_start: true
